@@ -1,0 +1,19 @@
+﻿body {
+    padding:3px;
+    margin:3px;
+    color:blue;
+    background-color:lightblue;
+    font-family:Verdana
+}
+
+p{
+    font-size:28px;
+}
+.divContent{
+    vertical-align:top; 
+    display:inline-block; 
+    width:65%;
+}
+.divEnd{
+    display:inline-block; width:30%;
+}

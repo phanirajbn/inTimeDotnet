@@ -1,0 +1,33 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="App.master.cs" Inherits="SampleWebApp.App" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link href="Content/Main.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <h1>Restaurant Foodie Application</h1>
+        <p>This business is good!!!!</p>
+        <asp:Menu Orientation="Horizontal" runat="server">
+            <Items>
+                <asp:MenuItem Text="Home" NavigateUrl="~/HomePage.aspx" />
+                <asp:MenuItem Text="Register" NavigateUrl="~/Registration.aspx" />
+                <asp:MenuItem Text="Upload Menu" />
+                <asp:MenuItem Text="Login" />
+                <asp:MenuItem Text="About Us" />
+            </Items>
+        </asp:Menu>
+        <div class="divContent">
+            <asp:ContentPlaceHolder runat="server" ID="mainContent">
+
+            </asp:ContentPlaceHolder> 
+        </div>
+        <div class="divEnd">
+            <asp:Calendar runat="server" />
+        </div>
+    </form>
+</body>
+</html>

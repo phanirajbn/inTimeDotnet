@@ -1,0 +1,5 @@
+E:\Programs\inTimeTraining\DataAccessLib\bin\Debug\DataAccessLib.dll
+E:\Programs\inTimeTraining\DataAccessLib\bin\Debug\DataAccessLib.pdb
+E:\Programs\inTimeTraining\DataAccessLib\obj\Debug\DataAccessLib.dll
+E:\Programs\inTimeTraining\DataAccessLib\obj\Debug\DataAccessLib.pdb
+E:\Programs\inTimeTraining\DataAccessLib\obj\Debug\DataAccessLib.csprojResolveAssemblyReference.cache
