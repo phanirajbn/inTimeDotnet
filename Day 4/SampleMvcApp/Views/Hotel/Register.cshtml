@@ -1,0 +1,14 @@
+﻿@model SampleMvcApp.Models.RestaurantTable
+<h1>Register new Hotel</h1>
+<div>
+    @using (Html.BeginForm())
+    {
+        <p>Enter the Name: @Html.EditorFor(m => m.Name)</p>
+        <p>Enter the Address: @Html.EditorFor(m => m.Address)</p>
+        <p>Enter the Email: @Html.EditorFor(m => m.EmailID)</p>
+        <p>Enter the Phone: @Html.EditorFor(m => m.ContactNo)</p>
+        <p>Enter the Username: @Html.EditorFor(m => m.username)</p>
+        <p>Enter the Password: @Html.EditorFor(m => m.password)</p>
+        <p><input type="submit" value="Register"/></p>
+    }
+</div>

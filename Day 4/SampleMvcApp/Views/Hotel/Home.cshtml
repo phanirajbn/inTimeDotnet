@@ -1,0 +1,32 @@
+﻿@model List<SampleMvcApp.Models.RestaurantTable>
+@{
+    ViewBag.Title = "Home";
+    var options = new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "content"
+    };
+}
+
+<h2>Restaurant Management Software</h2>
+<div>
+    <p>Restaurant Foodie App will help restaurant owners to meet their customers without marketing and customer without reaching them...</p>
+    <p>Reach us to make UR customers reach U!!!!!</p>
+</div>
+@Ajax.ActionLink("Register New", "Register", options)
+@Ajax.ActionLink("UpdateMenu", "UpdateMenu", options)
+<div id="content">
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Options</th>
+        </tr>
+        @foreach(var hotel in Model)
+        {
+            <tr>
+                <td>@hotel.Name</td>
+                <td>@Ajax.ActionLink("Edit", "Edit", new { id = hotel.RestaurantID }, options)</td>
+            </tr>
+        }
+    </table>
+</div>

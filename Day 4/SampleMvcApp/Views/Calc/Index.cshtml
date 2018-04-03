@@ -1,0 +1,22 @@
+﻿@model SampleMvcApp.Models.CalcModel
+
+@{
+    ViewBag.Title = "Index";
+    var listItems = (from operation in Model.Operations
+                    select new SelectListItem { Text = operation }).ToList();
+}
+
+<h2>My Calc Program</h2>
+<div>
+    @using (Html.BeginForm())
+    {
+        @*Form Tag in action**@
+        <p>Value1 :@Html.EditorFor((m) => m.Value1) </p>
+        <p>Value2 :@Html.EditorFor((m) => m.Value2) </p>
+        <p>Operation :@Html.DropDownListFor((m) => m.Operation, listItems) </p>
+        <p><button type="submit">Get Value</button></p>
+    }
+</div>
+<div>
+    The Result: @Model.Result
+</div>
