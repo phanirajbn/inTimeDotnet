@@ -1,0 +1,21 @@
+<div class="jumbotron">
+  <div style="text-align: center">
+
+  <h3>{{customerName}}</h3>
+    <p>{{customerAddress}}</p>
+
+<hr/>
+<table border="1" width="85%">
+  <tr *ngFor ="let hotel of data">
+    <td>
+      <div>
+        <h3>{{hotel.HotelName}}</h3>
+        <p>{{hotel.Address}}</p>
+        <a  href="#">Order Food</a>
+    </div>
+  </td>
+    
+  </tr>
+</table>  
+</div>
+</div>
