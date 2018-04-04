@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+    <script>
+        var url = 'http://localhost:50241/api/Employee';
+        function loadEmployees() {
+            $("table").find("tr:gt(0)").remove();
+            $.get(url, function (data, ex) {
+                $.each(data, function (index, item) {
+                    var row = '<tr><td>' + item.EmpId + '</td><td>';
+                    row += item.EmpName + '</td><td>';
+                    row += item.EmpAddress + '</td><td>';
+                    row += item.EmpSalary + '</td><td>';
+                    row += item.Dept + '</td><td><a class="edit" href="#">Edit</a></td></tr>';
+                    $("table").append(row);
+                });
+                $(".edit").click(function () {
+                    var id = $(this).parent().siblings("td:eq(0)").text();
+                    $.get(url + '/' + id, function (data, ex) {
+                        $("#txtId").val(data.EmpId);
+                        $("#txtName").val(data.EmpName);
+                        $("#txtAddress").val(data.EmpAddress);
+                        $("#txtSalary").val(data.EmpSalary);
+                        $("#txtDept").val(data.Dept);
+                        $("#container").children("div:eq(0)").show();
+                    });
+                })
+            });
+        }
+        function updateEmployee() {
+            var emp = {};
+            emp.EmpId = $("#txtId").val();
+            emp.EmpName = $("#txtName").val();
+            emp.EmpAddress = $("#txtAddress").val();
+            emp.EmpSalary = $("#txtSalary").val();
+            emp.Dept = $("#txtDept").val();
+            
+            $.ajax({
+                method: "POST",
+                data: emp,
+                url: 'http://localhost:50241/api/Update',
+                success: function (data) {
+                    alert("Success");
+                },
+                error: function (err) {
+                    debugger;
+                    alert(err.message);
+                }
+            });
+        }
+        function deleteEmployee() {
+            //$.ajax({
+            //    method: "DELETE",
+            //    url: url + '/' + $("#txtId").val(),
+            //    success: function (data) {
+            //        alert("deleted");
+            //    }
+            //});
+            var url = "http://localhost:50241/api/Delete/" + $("#txtId").val();
+            $.get(url, function (data) {
+                alert("Deleted");
+            })
+        }
+        $(document).ready(function () {
+            loadEmployees();
+            $("#container").children().hide();
+            $("#btnUpdate").click(updateEmployee);
+            $("#btnDelete").click(deleteEmployee);
+        })
+    </script>
+    <style>
+        .table{
+            display:inline-block;
+            width:50%;
+            border:1px solid red;
+            vertical-align:top;
+        }
+        .container{
+            display:inline-block;
+            width:40%;
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employee Info System</h1>
+    <div class="table">
+        <table border="1" width="80%">
+            <tr>
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Employee Address</th>
+                <th>Employee Salary</th>
+                <th>Employee Dept</th>
+                <td>Options</td>
+            </tr>
+        </table>
+    </div>
+    <div class="container" id="container">
+        <div class="detail">
+            <h2>Details to edit</h2>
+            <p><input type="hidden" id="txtId"/></p>
+            <p><input type="text" placeholder="EmpName" id="txtName" /></p>
+            <p><input type="text" placeholder="EmpAddress" id="txtAddress" /></p>
+            <p><input type="text" placeholder="EmpSalary" id="txtSalary" /></p>
+            <p><input type="text" placeholder="Dept" id="txtDept" /></p>
+            <p><button id="btnUpdate">Update</button><button id="btnDelete">Delete</button></p>
+        </div>
+        <div class="add">
+            <h2>Details to Add</h2>
+            <p><input type="text" placeholder="EmpName" id="txtEmpName" /></p>
+            <p><input type="text" placeholder="EmpAddress" id="txtEmpAddress" /></p>
+            <p><input type="text" placeholder="EmpSalary" id="txtEmpSalary" /></p>
+            <p><input type="text" placeholder="Dept" id="txtEmpDept" /></p>
+            <p><button id="btnAdd">Add</button></p>
+        </div>
+    </div>    
+</body>
+</html>
